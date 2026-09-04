@@ -75,6 +75,7 @@ export default function Dashboard() {
   const [invTitle, setInvTitle] = useState("");
   const [invCategory, setInvCategory] = useState("Renda Fixa");
   const [invAmount, setInvAmount] = useState("");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // CARREGAR TODOS OS DADOS DA API
   const fetchAllData = async () => {
@@ -1108,6 +1109,40 @@ export default function Dashboard() {
                 </label>
               </div>
             </div>
+            {/* Botão de Menu visível apenas no celular (hidden md:hidden) */}
+<div className="flex items-center justify-between p-4 bg-slate-900 border-b border-slate-800 md:hidden">
+  <span className="text-xl font-bold text-slate-100">GSF Finance</span>
+  <button
+    onClick={() => setIsMenuOpen(!isMenuOpen)}
+    className="p-2 text-slate-300 hover:text-white focus:outline-none"
+  >
+    {/* Ícone Dinâmico: 'X' se aberto, 'Hamburguer' se fechado */}
+    {isMenuOpen ? "✕" : "☰"}
+  </button>
+</div>
+
+{/* Sidebar / Menu Lateral */}
+<aside
+  className={`
+    ${isMenuOpen ? "block" : "hidden"} 
+    md:block w-full md:w-64 bg-slate-900 p-4 border-r border-slate-800 flex-shrink-0
+  `}
+>
+  <div className="hidden md:block mb-6">
+    <h1 className="text-2xl font-bold text-emerald-400">GSF Finance</h1>
+  </div>
+
+  {/* Seus links de navegação aqui */}
+  <nav className="flex flex-col gap-2">
+    <button onClick={() => setIsMenuOpen(false)} className="text-left p-2 hover:bg-slate-800 rounded">
+      Painel Geral
+    </button>
+    <button onClick={() => setIsMenuOpen(false)} className="text-left p-2 hover:bg-slate-800 rounded">
+      Transações
+    </button>
+    {/* ...seus outros botões do menu */}
+  </nav>
+</aside>
 
             {/* Backup e Exportação */}
             <div className="bg-slate-900 border border-slate-800 p-6 rounded-xl space-y-4">
