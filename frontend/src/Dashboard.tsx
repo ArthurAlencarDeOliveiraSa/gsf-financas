@@ -75,6 +75,7 @@ export default function Dashboard() {
   const [invTitle, setInvTitle] = useState("");
   const [invCategory, setInvCategory] = useState("Renda Fixa");
   const [invAmount, setInvAmount] = useState("");
+  
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // CARREGAR TODOS OS DADOS DA API
