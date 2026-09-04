@@ -1110,39 +1110,53 @@ export default function Dashboard() {
               </div>
             </div>
             {/* Botão de Menu visível apenas no celular (hidden md:hidden) */}
-<div className="flex items-center justify-between p-4 bg-slate-900 border-b border-slate-800 md:hidden">
-  <span className="text-xl font-bold text-slate-100">GSF Finance</span>
-  <button
-    onClick={() => setIsMenuOpen(!isMenuOpen)}
-    className="p-2 text-slate-300 hover:text-white focus:outline-none"
-  >
-    {/* Ícone Dinâmico: 'X' se aberto, 'Hamburguer' se fechado */}
-    {isMenuOpen ? "✕" : "☰"}
-  </button>
-</div>
-
-{/* Sidebar / Menu Lateral */}
-<aside
-  className={`
-    ${isMenuOpen ? "block" : "hidden"} 
-    md:block w-full md:w-64 bg-slate-900 p-4 border-r border-slate-800 flex-shrink-0
-  `}
->
-  <div className="hidden md:block mb-6">
-    <h1 className="text-2xl font-bold text-emerald-400">GSF Finance</h1>
+<div className="flex flex-col md:flex-row min-h-screen bg-slate-950 text-slate-100 overflow-x-hidden">
+  
+  {/* TOPBAR MOBILE (Aparece somente em celulares) */}
+  <div className="flex items-center justify-between p-4 bg-slate-900 border-b border-slate-800 md:hidden w-full">
+    <h1 className="text-xl font-bold text-emerald-400">GSF Finance</h1>
+    <button
+      type="button"
+      onClick={() => setIsMenuOpen(!isMenuOpen)}
+      className="p-2 text-2xl text-slate-100 focus:outline-none bg-slate-800 rounded"
+    >
+      {isMenuOpen ? "✕" : "☰"}
+    </button>
   </div>
 
-  {/* Seus links de navegação aqui */}
-  <nav className="flex flex-col gap-2">
-    <button onClick={() => setIsMenuOpen(false)} className="text-left p-2 hover:bg-slate-800 rounded">
-      Painel Geral
-    </button>
-    <button onClick={() => setIsMenuOpen(false)} className="text-left p-2 hover:bg-slate-800 rounded">
-      Transações
-    </button>
-    {/* ...seus outros botões do menu */}
-  </nav>
-</aside>
+  {/* SIDEBAR (Empilhada/Oculta no celular, Fixa na esquerda no Desktop) */}
+  <aside
+    className={`${
+      isMenuOpen ? "block" : "hidden"
+    } md:block w-full md:w-64 bg-slate-900 p-4 border-b md:border-b-0 md:border-r border-slate-800 flex-shrink-0`}
+  >
+    <div className="hidden md:block mb-6">
+      <h1 className="text-2xl font-bold text-emerald-400">GSF Finance</h1>
+    </div>
+
+    {/* Seus botões do menu */}
+    <nav className="flex flex-col gap-2">
+      <button 
+        onClick={() => setIsMenuOpen(false)} 
+        className="text-left p-2 hover:bg-slate-800 rounded"
+      >
+        Painel Geral
+      </button>
+      <button 
+        onClick={() => setIsMenuOpen(false)} 
+        className="text-left p-2 hover:bg-slate-800 rounded"
+      >
+        Transações
+      </button>
+      {/* Mantenha os seus outros botões aqui... */}
+    </nav>
+  </aside>
+
+  {/* CONTEÚDO PRINCIPAL (Cards, Gráficos, etc) */}
+  <main className="flex-1 p-4 md:p-6 overflow-y-auto">
+    {/* O seu conteúdo do Dashboard continua aqui */}
+  </main>
+</div>
 
             {/* Backup e Exportação */}
             <div className="bg-slate-900 border border-slate-800 p-6 rounded-xl space-y-4">
