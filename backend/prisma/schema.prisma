@@ -1,0 +1,71 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           String        @id @default(uuid())
+  name         String
+  email        String        @unique
+  password     String
+  transactions Transaction[]
+  goals        Goal[]
+  budgets      Budget[]
+  investments  Investment[]
+  settings     Setting?
+  createdAt    DateTime      @default(now())
+}
+
+model Transaction {
+  id          String   @id @default(uuid())
+  description String
+  amount      Float
+  type        String   // "income" ou "outcome"
+  category    String   @default("Geral")
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  createdAt   DateTime @default(now())
+}
+
+model Goal {
+  id            String   @id @default(uuid())
+  title         String
+  targetAmount  Float
+  currentAmount Float    @default(0)
+  userId        String
+  user          User     @relation(fields: [userId], references: [id])
+  createdAt     DateTime @default(now())
+}
+
+model Budget {
+  id        String   @id @default(uuid())
+  category  String
+  limit     Float
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Investment {
+  id             String   @id @default(uuid())
+  title          String
+  category       String
+  amountInvested Float
+  currentValue   Float
+  userId         String
+  user           User     @relation(fields: [userId], references: [id])
+  createdAt      DateTime @default(now())
+}
+
+model Setting {
+  id           String  @id @default(uuid())
+  currency     String  @default("BRL")
+  notifications Boolean @default(true)
+  monthlyGoal  Float   @default(0)
+  userId       String  @unique
+  user         User    @relation(fields: [userId], references: [id])
+}
