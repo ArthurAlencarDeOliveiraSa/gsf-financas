@@ -37,7 +37,7 @@ export default function Dashboard() {
   const [currentPass, setCurrentPass] = useState("");
   const [newPass, setNewPass] = useState("");
 
-  const [token, setToken] = useState<string | null>(localStorage.getItem("token"));
+  const [token, setToken] = useState<string | null>(localStorage.getItem("@GSF:token"));
   const [activeTab, setActiveTab] = useState("dashboard");
 
   // Auth State
