@@ -182,3 +182,28 @@
     border-right-color: var(--border);
   }
 }
+@media (max-width: 768px) {
+  /* Evita rolagem horizontal indesejada */
+  body, html {
+    overflow-x: hidden;
+  }
+
+  /* Converte grids/flex em linha para coluna única */
+  .container, main, section {
+    width: 100% !important;
+    padding: 12px !important;
+  }
+
+  /* Faz tabelas ou cards longos rolarem na horizontal se preciso */
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  /* Quebra sidebars ou menus lado a lado para empilhar */
+  .sidebar-container, .dashboard-grid {
+    flex-direction: column !important;
+    grid-template-columns: 1fr !important;
+  }
+}
