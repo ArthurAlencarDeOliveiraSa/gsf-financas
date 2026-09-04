@@ -25,7 +25,7 @@ export default function Auth({ onLoginSuccess }: AuthProps) {
     setSuccess("");
     setLoading(true);
 
-    const endpoint = isRegister ? "/auth/register" : "/auth/login";
+    const endpoint = isRegister ? "/register" : "/login";
     const payload = isRegister 
       ? { name, email, password: senha } 
       : { email, password: senha };
