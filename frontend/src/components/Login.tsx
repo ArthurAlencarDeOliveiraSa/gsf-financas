@@ -31,7 +31,7 @@ export default function Auth({ onLoginSuccess }: AuthProps) {
       : { email, password: senha };
 
     try {
-      const response = await fetch(`http://localhost:3001${endpoint}`, {
+      const response = await fetch(`https://gsf-financas.onrender.com${endpoint}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

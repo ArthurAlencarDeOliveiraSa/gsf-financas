@@ -29,7 +29,7 @@ import {
   Legend
 } from "recharts";
 
-const API_URL = "http://localhost:3001";
+const API_URL = "https://gsf-financas.onrender.com";
 const COLORS = ["#10B981", "#F59E0B", "#EF4444", "#6366F1", "#8B5CF6", "#EC4899"];
 
 export default function Dashboard() {
