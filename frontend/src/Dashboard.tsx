@@ -478,7 +478,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="flex h-screen bg-slate-950 text-slate-100 overflow-hidden">
+    <div className="flex flex-col md:flex-row min-h-screen bg-slate-950 text-slate-100 overflow-x-hidden">
       {/* SIDEBAR */}
       <aside className="w-64 bg-slate-900 border-r border-slate-800 flex flex-col justify-between">
         <div className="p-4">
